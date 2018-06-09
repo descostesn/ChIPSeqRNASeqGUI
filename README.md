@@ -37,10 +37,10 @@ ReinbergCore is a Java application that enables to process ChIP-seq and RNA-seq 
 </ol>
 You then need to put all files in the same folder on Phoenix. In the example below, I create a reinbergcore folder. You can choose the name that you want. This folder is from where you will run all your analysis:</br>
 </br>
-<img src="command1.png" alt="ssh descon01@phoenix.med.nyu.edu"></br>
+<img src="./images/command1.png" alt="ssh descon01@phoenix.med.nyu.edu"></br>
 <br/>
 Once connected to phoenix:<br/>
-<img src="command2.png" alt="Create folder"><br>
+<img src="./images/command2.png" alt="Create folder"><br>
 <br/>
 Here is an explanation of what the different commands do:<br/>
 <ol>
@@ -50,19 +50,19 @@ Here is an explanation of what the different commands do:<br/>
 </ol>
 <br/>
 Now go to the folder where your three files were downloaded and copy them to the destination folder on Phoenix (scp = ssh copy):</br>
-<img src="command3.png" alt="Copy files"><br/>
+<img src="./images/command3.png" alt="Copy files"><br/>
 
 Replace descon01 by your ID and /ifs/home/descon01/reinbergcore by your own path. <br/>
 <br/>
 Connect to Phoenix, go to the folder to which you have just copied the files and run R:<br/>
-<img src="runR.png" alt="run R"><br/>
+<img src="./images/runR.png" alt="run R"><br/>
 <br/>
 Install the Rargs.tar.gz package by running the commands:<br/>
-<img src="installRargs.png" alt="Install Rargs"><br/>
+<img src="./images/installRargs.png" alt="Install Rargs"><br/>
 <br/>
 Run the application by following these steps:
 <br/><br/>
-<img src="loadApplication.png" alt="Load application"><br/>
+<img src="./images/loadApplication.png" alt="Load application"><br/>
 Do not forget to replace the commands with your ID and path.<br/>
 <br/>
 Explanations of the different commands:<br/>
@@ -89,7 +89,7 @@ Explanations of the different commands:<br/>
     <li> Select the min and max number of CPU to process the data on (The more you use, faster it is but you can wait longer before your job is submitted). My advice is to use min=1 and max=20. </li>
 </ol>
 <br/>
-<img src="interface.png" alt="Interface overview"><br/>
+<img src="./images/interface.png" alt="Interface overview"><br/>
 </p>
 <br/>
 <br/>
@@ -102,7 +102,7 @@ Explanations of the different commands:<br/>
     <li> The command submitted to the grid which is of the form: qsub pipeline_fastq_to_bigwigs_submission.sh <i>myinputfile.conf</i></li>
 </ol>
 <br/>
-<img src="submit.png" alt="submit details"><br/>
+<img src="./images/submit.png" alt="submit details"><br/>
 <br/>
 <i><b>qsub</b></i> is a command that submits a job to the queue. A <i>queue</i> is the HyperComputing or grid waiting list. When a job is submitted to the grid, it first goes into a waiting list to be submitted. Once it is the next job to be submitted, it is sent to a <i>node</i>. You can imagine a node as an individual computer that can calculate super fast. Therefore, the above command <i>qsub pipeline_fastq_to_bigwigs_submission.sh myinputfile</i> means that the bash script pipeline_fastq_to_bigwigs_submission.sh is submitted to the queue and that it is taking <i>myinputfile</i> as parameter. <br/>
 As you probably noticed, you downloaded a third file called <i>pipeline_fastq_to_bigwigs.pl</i>. It is a Perl script that is called by pipeline_fastq_to_bigwigs_submission.sh which role is to read all parameters of <i>myinputfile.conf</i> and load the proper operations to perform on your fastq files.</br>
@@ -122,17 +122,17 @@ The results of the quality control can be found in the same folder than your fas
         <li> Some <i>analysisname</i>.e<i>JObID</i>.<i>JobNb</i> files which contain the error messages of the FASTQC program if there are. </li>
 </ol>
 
-<img src="qualityControlLog.png" alt="Quality control log"><br/><br/>
+<img src="./images/qualityControlLog.png" alt="Quality control log"><br/><br/>
 <b><u><i>All the steps of the pipeline output the same thing. A configuration file (.conf), an output file (.o) and an error file (.e) for each sample. These files can be used to figure out what can be the problem if your data processing fails.</i></u></b>
 </p>
 
 <h3><p> 2. Quality filtering</p></h3>
 <p> After controlling the sequences quality, ReinbergCore filters out all sequences which do not have at least 80% of their scores above 25. This is achieved by <a href="http://www.nipgr.res.in/ngsqctoolkit.html">NGSQCToolkit v2.3.3</a>. The filtered sequences are written to <b><i>yourFastqfolder</i>/quality_control_and_filtering/IlluQC_Filtered_files/</b>:<br/>
 <br/>
-<img src="filteredFastq.png" alt="Filtered fastq files"><br/>
+<img src="./images/filteredFastq.png" alt="Filtered fastq files"><br/>
 <br/>
 The png, stat and html files contain information about the filtering. The other files indicate if the transition to the next steps of the pipeline was done properly. The log files of NGSQCToolkit can be found in <b><i>yourFastqfolder</i>/tmp/scripts/quality_filtering/</b>.<br/><br/>
-<img src="qualityFilteringLog.png" alt="Quality filtering log"><br/><br/>
+<img src="./images/qualityFilteringLog.png" alt="Quality filtering log"><br/><br/>
 </p>
 
 <h3><p> 3. Data alignment</p></h3>
@@ -145,11 +145,11 @@ The pipeline uses:<br/>
 </ol>
 Bowtie1 output SAM files to the folder <b><i>yourFastqfolder</i>/quality_control_and_filtering/IlluQC_Filtered_files/.</b><br/>
 <br/>
-<img src="samfiles.png" alt="SAM files"><br/>
+<img src="./images/samfiles.png" alt="SAM files"><br/>
 <br/>
 These are converted to BAM files and placed in the folder <b><i>yourFastqfolder</i>/bam_files</b><br/>.
 <br/>
-<img src="unsortedbam.png" alt="Unsorted BAM files"><br/>
+<img src="./images/unsortedbam.png" alt="Unsorted BAM files"><br/>
 <br/>
 The logs of the alignment and conversion can be found in <b><i>yourFastqFolder</i>/tmp/scripts/alignment</b> and <b><i>yourFastqFolder</i>/tmp/scripts/sam_to_bam/</b> respectively.<br/>
 Tophat1 output directly BAM files that are also moved to <b><i>yourFastqfolder</i>/bam_files</b> and log files can also be found in <b><i>yourFastqFolder</i>/tmp/scripts/alignment.</b><br/><br/>
@@ -159,14 +159,14 @@ More aligners will be proposed upon request and in future versions of the applic
 <h3><p> 4. BAM sorting</p></h3>
 <p> BAM files are sorted with <a href="http://broadinstitute.github.io/picard/"> Picard tools v1.88 </a>. A suffix _SORTED_PICARD_COOR is added to each BAM files:<br/>
 <br/>
-<img src="sortedbam.png" alt="Sorted BAM files"><br/>
+<img src="./images/sortedbam.png" alt="Sorted BAM files"><br/>
 </p>
 
 <h3><p> 5. Conversion to Wiggle files</p></h3>
 <p> Data are further processed with <a href="">Pasha⁠ v0.99.21</a>: Briefly, for ChIP-seq data, Pasha removes duplicated reads according to a threshold technique and apply the elongation size given as parameter. More sophisticated approaches are available and might be included in later versions. BAM files reads are piled up into bins <b>(50 bp by default)</b> to obtain wiggle files (also for RNA-seq).<br/>
 Results of Pasha processing can be found in <b><i>yourFastqFolder</i>/wig_files/</b><br/>
 <br/>
-<img src="pasharesults.png" alt="Pasha results"><br/>
+<img src="./images/pasharesults.png" alt="Pasha results"><br/>
 </p>
 
 <h3><p> 6. ChIP-seq: If not spiked-in, Input subtraction</p></h3>
@@ -183,7 +183,7 @@ Results of Pasha processing can be found in <b><i>yourFastqFolder</i>/wig_files/
 </ol>
 A suffix corresponding to each step is added to the wiggle file. Below is an example for one sample:<br/>
 <br/>
-<img src="spikein.png" alt="Spike-in results"><br/> <br/>
+<img src="./images/spikein.png" alt="Spike-in results"><br/> <br/>
 </p>
 
 <h3><p> 8. Conversion to bigwigs</p></h3>
@@ -197,7 +197,7 @@ A suffix corresponding to each step is added to the wiggle file. Below is an exa
 <br/>
 <h2><p> Monitoring processes</p></h2>
 <p> The complete execution of the pipeline can take several hours. If one wishes to control at what point the pipeline is you can enter the command:<br/><br/>
-<img src="qstat.png" alt="Qstat monitoring"><br/><br/>
+<img src="./images/qstat.png" alt="Qstat monitoring"><br/><br/>
 <br/>
 The first column indicates the jobID, the second columns indicates the priority, the third indicates the job name, the fourth the user and the fifth the status of the job. The status possible values are:<br/>
 <ol>
