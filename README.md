@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ReinbergCore Application</title>
-</head>
 <body>
 <h1><p> ReinbergCore Application</p></h1>
 <br/>
 <p><h2> Introduction </h2></p>
-<p> ReinbergCore is a Java application that enables to process ChIP-seq and RNA-seq data from .fastq files to bigwig files. The different steps run by the application are: <br/>
+<p> <b>This repository aims at showing what I did. I am currently developing a more complete GUI integrating this one in a more
+sophisticated manner.</b> </br>
+ReinbergCore is a Java application that enables to process ChIP-seq and RNA-seq data from .fastq files to bigwig files. The different steps run by the application are: <br/>
 <ol>
     <li> Perform quality control </li>
     <li> Perform quality filtering </li>
@@ -190,7 +189,7 @@ A suffix corresponding to each step is added to the wiggle file. Below is an exa
 <h3><p> 8. Conversion to bigwigs</p></h3>
 <p> Fixed steps wiggle files are converted to bigwigs with the script <a href="http://hgdownload.soe.ucsc.edu/admin/exe/">wigToBigWig</a> available on the UCSC Genome Browser website.<br/>
 <br/>
-<img src="bigwigs.png" alt="Bigwig files"><br/> <br/>
+<img src="images/bigwigs.png" alt="Bigwig files"><br/> <br/>
 </p>
 
 
