@@ -189,7 +189,7 @@ A suffix corresponding to each step is added to the wiggle file. Below is an exa
 <h3><p> 8. Conversion to bigwigs</p></h3>
 <p> Fixed steps wiggle files are converted to bigwigs with the script <a href="http://hgdownload.soe.ucsc.edu/admin/exe/">wigToBigWig</a> available on the UCSC Genome Browser website.<br/>
 <br/>
-<img src="images/bigwigs.png" alt="Bigwig files"><br/> <br/>
+<img src="./images/bigwigs.png" alt="Bigwig files"><br/> <br/>
 </p>
 
 
