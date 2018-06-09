@@ -4,7 +4,9 @@
 <h1><p> ReinbergCore Application</p></h1>
 <br/>
 <p><h2> Introduction </h2></p>
-<p> <b>This repository aims at showing what I did. I am currently developing a more complete GUI integrating this one in a more
+<p> <b>This repository aims at showing what I did, not to provide a usable too to the community. You can however have a look at 
+the code and adapt it to your own needs. This is a simple java GUI to enable biologists of my lab to load their data 
+processing in a very simple manner. I am currently developing a more complete GUI integrating this one in a more
 sophisticated manner.</b> </br>
 ReinbergCore is a Java application that enables to process ChIP-seq and RNA-seq data from .fastq files to bigwig files. The different steps run by the application are: <br/>
 <ol>
